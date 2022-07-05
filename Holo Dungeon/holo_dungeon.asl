@@ -44,7 +44,7 @@ split {
         return true;
     }
     // split after gnomes
-    if (current.combatId == 0 && current.sceneToReturnTo != null && current.sceneToReturnTo.Equals("scene-northcottage") && old.inCombat && !current.inCombat) {
+    if (current.combatId == 0 && current.sceneToReturnTo == "scene-northcottage" && old.inCombat && !current.inCombat) {
         return true;
     }
     // split after haachama
@@ -52,7 +52,7 @@ split {
         return true;
     }
     // split on sleep
-    if (old.currentDialogue != null && old.currentDialogue.Equals("You decided to go to sleep for the day.") && current.currentDialogue == null) {
+    if (old.currentDialogue == "You decided to go to sleep for the day." && current.currentDialogue == null) {
         return true;
     }
 }
