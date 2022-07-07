@@ -62,7 +62,7 @@ split {
 }
 
 start {
-    if (old.mainMenuActive && !current.mainMenuActive && current.mainMenuSelection == 0) {
+    if (old.mainMenuActive && !current.mainMenuActive && old.mainMenuSelection == 0) {
         return true;
     }
 }
