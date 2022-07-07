@@ -20,11 +20,7 @@ isLoading {}
 
 gameTime {}
 
-reset {
-    if (!old.mainMenuActive && current.mainMenuActive) {
-        return true;
-    }
-}
+reset {}
 
 split {
     // split at kiara
