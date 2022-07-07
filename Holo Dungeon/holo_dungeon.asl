@@ -39,17 +39,20 @@ split {
     if (!old.inaInParty && current.inaInParty) {
         return true;
     }
-    // split after barrel
-    if (current.combatId == 2 && old.inCombat && !current.inCombat) {
-        return true;
-    }
-    // split after gnomes
-    if (current.combatId == 0 && current.sceneToReturnTo == "scene-northcottage" && old.inCombat && !current.inCombat) {
-        return true;
-    }
-    // split after haachama
-    if (current.combatId == 1 && old.inCombat && !current.inCombat) {
-        return true;
+    // split after boss battles
+    if (old.inCombat && !current.inCombat) {
+        // split after barrel
+        if (current.combatId == 2) {
+            return true;
+        }
+        // split after gnomes
+        if (current.combatId == 0 && current.sceneToReturnTo == "scene-northcottage") {
+            return true;
+        }
+        // split after haachama
+        if (current.combatId == 1) {
+            return true;
+        }
     }
     // split on sleep
     if (old.currentDialogue == "You decided to go to sleep for the day." && current.currentDialogue == null) {
