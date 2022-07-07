@@ -6,9 +6,10 @@ state("Holo Dungeon") {
     bool inaInParty : "UnityPlayer.dll", 0x01762080, 0x18, 0xB8, 0x10, 0xB0, 0x118, 0xCE;
     bool inCombat : "UnityPlayer.dll", 0x01762080, 0x18, 0xB8, 0x10, 0xB0, 0x118, 0x99;
     int combatId : "UnityPlayer.dll", 0x01762080, 0x18, 0xB8, 0x10, 0xB0, 0x118, 0x40, 0x38;
-    string36 sceneToReturnTo : "UnityPlayer.dll", 0x017FF028, 0x120, 0x38, 0x10, 0x28, 0xB0, 0x118, 0x70, 0x14;
+    string58 cutsceneAfterCombat : "UnityPlayer.dll", 0x01762080, 0x18, 0xB8, 0x10, 0xB0, 0x118, 0x78, 0x14;
     string78 currentDialogue : "UnityPlayer.dll", 0x017F6E98, 0x8, 0x0, 0x28, 0x8, 0xF0, 0x68, 0x20, 0x14;
-} 
+    int enemyHealth : "UnityPlayer.dll", 0x017B8868, 0xC8, 0x40, 0xE0, 0x60, 0x28, 0x70, 0x20, 0x48;
+}
 
 startup {}
 
@@ -42,13 +43,17 @@ split {
             return true;
         }
         // split after gnomes
-        if (current.combatId == 0 && current.sceneToReturnTo == "scene-northcottage") {
+        if (current.cutsceneAfterCombat == "cutscene-aftercallignomefight") {
             return true;
         }
         // split after haachama
         if (current.combatId == 1) {
             return true;
         }
+    }
+    // split on MOM
+    if (current.inCombat && current.cutsceneAfterCombat == "smolame-aftermom" && old.enemyHealth > 0 && current.enemyHealth == 0) {
+        return true;
     }
     // split on sleep
     if (old.currentDialogue == "You decided to go to sleep for the day." && current.currentDialogue == null) {
