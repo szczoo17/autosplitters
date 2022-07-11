@@ -32,7 +32,7 @@ reset {}
 
 split {
     // split after each level
-    if (vars.isAfterLevel && !old.ameSpin == 0 && current.ameSpin) {
+    if (vars.isAfterLevel && !old.ameSpin && current.ameSpin) {
         vars.isAfterLevel = false;
         return true;
     }
