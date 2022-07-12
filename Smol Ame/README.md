@@ -1,7 +1,8 @@
 # Smol Ame Auto Splitter
 Starts the timer when a level starts.  
 Splits after completing a level when loading starts.   
-Splits when The Final Update button is pressed.
+Splits when The Final Update button is pressed.  
+Removes loads - make sure to compare against game time for load removing.
 
 ## Links
 leaderboards: [speedrun.com/smol_ame](https://www.speedrun.com/smol_ame)  
